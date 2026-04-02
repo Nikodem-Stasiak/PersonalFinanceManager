@@ -1,44 +1,26 @@
-# 💰 Personal Finance Manager
+# 🏦 Personal Finance Manager
 
-Aplikacja do zarządzania finansami osobistymi napisana w języku **Java**. Projekt stworzony w celu nauki programowania obiektowego (OOP) oraz organizacji danych w aplikacjach typu CRUD.
+Prosty, ale potężny system do zarządzania finansami osobistymi napisany w **Javie**, w pełni zintegrowany z **Microsoft Excel**. Aplikacja pozwala na śledzenie dochodów i wydatków oraz generowanie profesjonalnych raportów wizualnych.
 
----
+## 🚀 Funkcje
+* **Zarządzanie transakcjami**: Dodawanie kwoty, kategorii, opisu oraz daty.
+* **Automatyczne Saldo**: Program na bieżąco wylicza aktualny stan konta w menu historii.
+* **Persystencja danych**: Automatyczny zapis i odczyt z pliku `finanse.csv`.
+* **Eksport do Excela**: Dane są formatowane pod polską lokalizację Excela (średniki jako separatory, przecinki w liczbach).
+* **Inteligentne Wydatki**: System automatycznie zamienia wydatki na liczby ujemne, co pozwala na błyskawiczne tworzenie Tabel Przestawnych i wykresów Salda.
 
-## 🚀 O Projekcie
-Menedżer Finansów pozwala użytkownikowi śledzić swoje wydatki i przychody. Każdy wpis jest kategoryzowany, co pozwala na późniejszą analizę budżetu.
+## 📈 Integracja z Excelem
+Dzięki zastosowaniu formatowania CSV zgodnego ze standardami finansowymi, projekt umożliwia:
+1. **Tworzenie Tabel Przestawnych** do szczegółowej analizy kategorii.
+2. **Generowanie Wykresów Kołowych** (struktura wydatków) oraz słupkowych (przychody).
+3. **Monitorowanie Salda** w czasie rzeczywistym poprzez funkcję "Odśwież wszystko" w Excelu.
 
-### Obecne funkcjonalności:
-* **Model Transakcji**: Obsługa kwot, kategorii, opisów oraz dat.
-* **Rozróżnianie Typów**: System rozpoznaje przychody `[+]` oraz wydatki `[-]`.
-* **Formatowanie danych**: Przejrzysta reprezentacja tekstowa każdej transakcji.
+## 🛠️ Technologia
+* **Język**: Java 21+
+* **Format danych**: CSV (kodowanie ISO-8859-2 dla poprawnej obsługi polskich znaków w Excelu).
+* **Analiza**: MS Excel / Power Query.
 
----
-
-## 🛠️ Technologie
-* **Język**: Java 21 (lub nowsza)
-* **IDE**: IntelliJ IDEA
-* **Kontrola wersji**: Git / GitHub
-
----
-
-## 📂 Struktura Projektu
-* `Transaction.java` – Klasa reprezentująca pojedynczą operację finansową (Model).
-* `Main.java` – Klasa startowa służąca do testowania logiki biznesowej.
-
----
-
-## ⚙️ Jak uruchomić?
-1. Sklonuj repozytorium:
-   ```bash
-    git clone https://github.com/Nikodem-Stasiak/PersonalFinanceManager.git
-2. Otwórz projekt w IntelliJ IDEA.
-3. Uruchom klasę Main.java.
-
----
-
-## 📈 Plany na przyszłość
-* [ ] Implementacja ArrayList do przechowywania historii transakcji.
-* [ ] System zapisu i odczytu danych z pliku .txt lub .csv.
-* [ ] Interfejs graficzny użytkownika (GUI) przy użyciu biblioteki Swing.
-* [ ] Statystyki wydatków z podziałem na kategorie.
-
+## 📋 Planowane ulepszenia (Roadmap)
+* [ ] **Pancerna Walidacja**: Odporność na błędne wprowadzanie danych (obsługa wyjątków `try-catch`).
+* [ ] **Automatyczna Data**: Systemowe pobieranie daty transakcji przyciskiem Enter.
+* [ ] **Menu Kategorii**: Wybór kategorii z predefiniowanej listy zamiast wpisywania ręcznego.
