@@ -12,20 +12,29 @@ public class Main {
 
         File plik = new File("finanse.csv");
         if (plik.exists()) {
-            try (Scanner fileScanner = new Scanner(plik)) {
+            try (Scanner fileScanner = new Scanner(plik, "ISO-8859-2")) {
+                if (fileScanner.hasNextLine()) {
+                    fileScanner.nextLine();
+                }
+
                 while (fileScanner.hasNextLine()) {
                     String linia = fileScanner.nextLine();
+                    if (linia.trim().isEmpty()) continue;
+
                     String[] czesci = linia.split(";");
-                    double kwota = Double.parseDouble(czesci[0]);
+
+                    double kwotaRaw = Double.parseDouble(czesci[0].trim().replace(',', '.'));
+                    double kwota = Math.abs(kwotaRaw);
                     String kategoria = czesci[1];
                     String opis = czesci[2];
                     String data = czesci[3];
-                    boolean czyToDochod = Boolean.parseBoolean(czesci[4]);
+                    boolean czyToDochod = Boolean.parseBoolean(czesci[4].trim());
+
                     historiaTransakcji.add(new Transaction(kwota, kategoria, opis, data, czyToDochod));
                 }
-                System.out.println("Wczytano poprzednie transakcje!");
-            } catch (FileNotFoundException e) {
-                System.out.println("Błąd: nie znaleziono pliku!");
+                System.out.println("Wczytano " + historiaTransakcji.size() + " transakcji.");
+            } catch (Exception e) {
+                System.out.println("Problem przy wczytywaniu danych: " + e.getMessage());
             }
         }
 
@@ -95,11 +104,13 @@ public class Main {
             }
         }
 
-        try (PrintWriter writer = new PrintWriter("finanse.csv")) {
+        try (PrintWriter writer = new PrintWriter("finanse.csv", "ISO-8859-2")) {
+            writer.println("Kwota;Kategoria;Opis;Data;CzyToDochod");
             for (Transaction t : historiaTransakcji) {
-                writer.println(t.getKwota() + ";" + t.getKategoria() + ";" + t.getOpis() + ";" + t.getData() + ";" + t.isCzyToDochod());
+                double kwotaDoZapisu = t.isCzyToDochod() ? t.getKwota() : -t.getKwota();
+                String kwotaString = String.valueOf(kwotaDoZapisu).replace('.', ',');
+                writer.println(kwotaString + ";" + t.getKategoria() + ";" + t.getOpis() + ";" + t.getData() + ";" + t.isCzyToDochod());
             }
-            System.out.println("Dane zostały bezpiecznie zapisane.");
         } catch (IOException e) {
             System.out.println("Błąd zapisu pliku!");
         }

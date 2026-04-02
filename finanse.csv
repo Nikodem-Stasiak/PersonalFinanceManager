@@ -1,3 +1,5 @@
-100.0;Kieszonkowe;Przelew od rodzicow;10.02.2026;true
-25.0;Wyj≈õcie ze znajomymi;Piwo;12.02.2026;false
-25.0;Zakupy;Zakupy spo≈ºywcze na ten tydzie≈Ñ;14.02.2026;false
+Kwota;Kategoria;Opis;Data;CzyToDochod
+-50,0;Zakupy;Zakupy spoøywcze;12.02.2026;false
+150,0;Kieszonkowe;Przelew od rodzicÛw;10.02.2026;true
+-25,0;Wyj∂cia;Piwo ze znajomymi;17.02.2026;false
+100,0;Kieszonkowe;Prezent od dziadkÛw;02.03.2026;true
