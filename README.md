@@ -1,44 +1,41 @@
-# 💰 Personal Finance Manager
+# 💰 Personal Finance Manager v2.0
 
-Aplikacja do zarządzania finansami osobistymi napisana w języku **Java**. Projekt stworzony w celu nauki programowania obiektowego (OOP) oraz organizacji danych w aplikacjach typu CRUD.
+Zaawansowana aplikacja konsolowa w Javie do zarządzania budżetem osobistym. Program pozwala na pełną interakcję z użytkownikiem oraz zachowywanie danych między sesjami.
 
 ---
 
-## 🚀 O Projekcie
-Menedżer Finansów pozwala użytkownikowi śledzić swoje wydatki i przychody. Każdy wpis jest kategoryzowany, co pozwala na późniejszą analizę budżetu.
-
-### Obecne funkcjonalności:
-* **Model Transakcji**: Obsługa kwot, kategorii, opisów oraz dat.
-* **Rozróżnianie Typów**: System rozpoznaje przychody `[+]` oraz wydatki `[-]`.
-* **Formatowanie danych**: Przejrzysta reprezentacja tekstowa każdej transakcji.
+## 🚀 Nowe Funkcjonalności
+* **System Menu**: Interaktywne menu główne sterowane liczbami (Switch-case).
+* **Trwałość danych (Persistence)**: Automatyczny zapis i odczyt historii z pliku `finanse.csv`.
+* **Dynamiczna Lista**: Zarządzanie nieograniczoną liczbą transakcji przy użyciu `ArrayList`.
+* **Silnik Obliczeniowy**: Automatyczne przeliczanie salda końcowego na podstawie całej historii.
 
 ---
 
 ## 🛠️ Technologie
-* **Język**: Java 21 (lub nowsza)
-* **IDE**: IntelliJ IDEA
-* **Kontrola wersji**: Git / GitHub
+* **Język**: Java 21
+* **I/O**: Java File, Scanner, PrintWriter (Obsługa plików CSV)
+* **Struktury**: ArrayList, Programowanie Obiektowe (OOP)
 
 ---
 
-## 📂 Struktura Projektu
-* `Transaction.java` – Klasa reprezentująca pojedynczą operację finansową (Model).
-* `Main.java` – Klasa startowa służąca do testowania logiki biznesowej.
+## 📂 Struktura Pliku Danych
+Dane są przechowywane w formacie CSV (Semicolon Separated):
+`KWOTA;KATEGORIA;OPIS;DATA;CZY_DOCHOD`
 
 ---
 
-## ⚙️ Jak uruchomić?
-1. Sklonuj repozytorium:
-   ```bash
-    git clone https://github.com/Nikodem-Stasiak/PersonalFinanceManager.git
-2. Otwórz projekt w IntelliJ IDEA.
-3. Uruchom klasę Main.java.
+## ⚙️ Jak używać?
+1. Uruchom `Main.java`.
+2. Wybierz opcję z menu:
+   - `1` aby dodać nowe wydatki/przychody.
+   - `2` aby sprawdzić stan konta i historię.
+   - `3` aby bezpiecznie zapisać dane i wyjść.
+3. Plik `finanse.csv` zostanie utworzony automatycznie w folderze głównym.
 
 ---
 
 ## 📈 Plany na przyszłość
-* [ ] Implementacja ArrayList do przechowywania historii transakcji.
-* [ ] System zapisu i odczytu danych z pliku .txt lub .csv.
-* [ ] Interfejs graficzny użytkownika (GUI) przy użyciu biblioteki Swing.
-* [ ] Statystyki wydatków z podziałem na kategorie.
-
+- [ ] Export danych do sformatowanego arkusza Excel.
+- [ ] Generowanie raportów miesięcznych.
+- [ ] Walidacja wprowadzanych danych (zabezpieczenie przed błędnym formatem liczb).
