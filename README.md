@@ -1,26 +1,28 @@
 # 🏦 Personal Finance Manager
 
-Prosty, ale potężny system do zarządzania finansami osobistymi napisany w **Javie**, w pełni zintegrowany z **Microsoft Excel**. Aplikacja pozwala na śledzenie dochodów i wydatków oraz generowanie profesjonalnych raportów wizualnych.
+Prosty, ale potężny system do zarządzania finansami osobistymi napisany w **Javie**, w pełni zintegrowany z **Microsoft Excel**. Aplikacja pozwala na precyzyjne śledzenie budżetu domowego oraz generowanie profesjonalnych raportów.
 
-## 🚀 Funkcje
+## 🚀 Nowości w wersji 2.0 (Pancerna Walidacja)
+Ostatnia aktualizacja skupiła się na stabilności systemu oraz komforcie użytkownika (UX):
+
+* **Pancerna Walidacja**: Program jest odporny na błędy wprowadzania danych. Dzięki zastosowaniu bloków `try-catch` oraz pętli walidacyjnych, wpisanie liter zamiast kwoty lub błędnych opcji w menu nie powoduje zamknięcia aplikacji.
+* **Standard Daty ISO 8601**: Przejście na międzynarodowy standard zapisu daty (`RRRR-MM-DD`), co zapewnia bezbłędne sortowanie chronologiczne w plikach tekstowych oraz pełną kompatybilność z bazami danych.
+* **Inteligentna Data**: Wdrożono obsługę `java.time.LocalDate`. Użytkownik może zatwierdzić dzisiejszą datę systemową za pomocą jednego klawisza **Enter**.
+* **Ulepszony UX**: Zamieniono techniczne parametry logiczne (`true/false`) na intuicyjne odpowiedzi `tak/nie`. System automatycznie radzi sobie z wielkością liter oraz przypadkowymi spacjami (`.toLowerCase().trim()`).
+
+## 📈 Funkcje i Integracje
 * **Zarządzanie transakcjami**: Dodawanie kwoty, kategorii, opisu oraz daty.
-* **Automatyczne Saldo**: Program na bieżąco wylicza aktualny stan konta w menu historii.
-* **Persystencja danych**: Automatyczny zapis i odczyt z pliku `finanse.csv`.
-* **Eksport do Excela**: Dane są formatowane pod polską lokalizację Excela (średniki jako separatory, przecinki w liczbach).
-* **Inteligentne Wydatki**: System automatycznie zamienia wydatki na liczby ujemne, co pozwala na błyskawiczne tworzenie Tabel Przestawnych i wykresów Salda.
-
-## 📈 Integracja z Excelem
-Dzięki zastosowaniu formatowania CSV zgodnego ze standardami finansowymi, projekt umożliwia:
-1. **Tworzenie Tabel Przestawnych** do szczegółowej analizy kategorii.
-2. **Generowanie Wykresów Kołowych** (struktura wydatków) oraz słupkowych (przychody).
-3. **Monitorowanie Salda** w czasie rzeczywistym poprzez funkcję "Odśwież wszystko" w Excelu.
+* **Automatyczne Saldo**: Dynamiczne wyliczanie aktualnego stanu konta w widoku historii.
+* **Eksport do Excela**: Dane są zapisywane w formacie CSV zoptymalizowanym pod polską lokalizację (średniki jako separatory, przecinki w liczbach), co umożliwia błyskawiczne tworzenie Tabel Przestawnych i wykresów w MS Excel.
+* **Persystencja danych**: Automatyczny zapis i odczyt z pliku `finanse.csv` przy użyciu kodowania `ISO-8859-2`.
 
 ## 🛠️ Technologia
 * **Język**: Java 21+
-* **Format danych**: CSV (kodowanie ISO-8859-2 dla poprawnej obsługi polskich znaków w Excelu).
-* **Analiza**: MS Excel / Power Query.
+* **Środowisko**: IntelliJ IDEA
+* **Biblioteki**: Standardowa biblioteka Javy (`java.time`, `java.io`, `java.util`).
+* **Analiza**: Microsoft Excel / Power Query.
 
 ## 📋 Planowane ulepszenia (Roadmap)
-* [ ] **Pancerna Walidacja**: Odporność na błędne wprowadzanie danych (obsługa wyjątków `try-catch`).
-* [ ] **Automatyczna Data**: Systemowe pobieranie daty transakcji przyciskiem Enter.
-* [ ] **Menu Kategorii**: Wybór kategorii z predefiniowanej listy zamiast wpisywania ręcznego.
+* [ ] **Słownik Kategorii**: Wybór kategorii z predefiniowanej listy (np. 1-Jedzenie, 2-Transport), aby uniknąć literówek psujących raporty.
+* [ ] **Statystyki w Konsoli**: Szybkie podsumowanie wydatków z podziałem na kategorie bezpośrednio w oknie programu.
+* [ ] **Interfejs Graficzny (GUI)**: Implementacja widoków okienkowych przy użyciu biblioteki Swing lub JavaFX.
