@@ -3,6 +3,8 @@ package pl.nikodem.finance;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args) {
@@ -65,16 +67,15 @@ public class Main {
                         while (true) {
                             try {
                                 System.out.print("Podaj kwotę: ");
-                                kwota = Double.parseDouble(scanner.nextLine());
                                 String wejscie = scanner.nextLine().replace(',', '.');
+                                kwota = Double.parseDouble(wejscie);
                                 if (kwota > 0) {
                                     break;
                                 } else {
                                     System.out.println("BŁĄD: Kwota musi być większa od zera!");
                                 }
-                                break;
                             } catch (Exception e) {
-                                System.out.println("Błąd podano nieprawidłową wartość:" + e.getMessage());
+                                System.out.println("Błąd: podano nieprawidłową wartość!");
                             }
                         }
 
@@ -84,18 +85,47 @@ public class Main {
                         System.out.print("Podaj opis: ");
                         String opis = scanner.nextLine();
 
-                        System.out.print("Podaj datę: ");
-                        String data = scanner.nextLine();
+                        System.out.print("Podaj datę (RRRR-MM-DD) [Enter dla dzisiaj: " + LocalDate.now() + "]: ");
+                        String wejscieDaty = scanner.nextLine().trim();
+                        String data;
+                        if (wejscieDaty.isEmpty()) {
+                            data = LocalDate.now().toString();
+                        } else {
+                            data = wejscieDaty;
+                        }
 
-                        System.out.print("Czy jest to dochód (true/false): ");
-                        boolean czyToDochod = scanner.nextBoolean();
-                        scanner.nextLine();
+                        boolean czyToDochod = false;
+                        while (true) {
+                            System.out.print("Czy jest to dochód? (tak/nie): ");
+                            String odp = scanner.nextLine().toLowerCase().trim();
+
+                            if (odp.equals("tak")) {
+                                czyToDochod = true;
+                                break;
+                            } else if (odp.equals("nie")) {
+                                czyToDochod = false;
+                                break;
+                            } else {
+                                System.out.println("BŁĄD: Napisz 'tak' lub 'nie'!");
+                            }
+                        }
 
                         historiaTransakcji.add(new Transaction(kwota, kategori, opis, data, czyToDochod));
 
-                        System.out.print("Czy dodać kolejną? (true/false): ");
-                        czyDodaćKolejną = scanner.nextBoolean();
-                        scanner.nextLine();
+                        while (true) {
+                            System.out.print("Czy dodać kolejną transakcję? (tak/nie): ");
+                            String wejscie = scanner.nextLine().toLowerCase().trim();
+
+                            if (wejscie.equals("tak")) {
+                                czyDodaćKolejną = true;
+                                break;
+                            } else if (wejscie.equals("nie")) {
+                                czyDodaćKolejną = false;
+                                break;
+                            } else {
+                                System.out.println("BŁĄD: Musisz wpisać 'tak' lub 'nie'!");
+                            }
+                        }
                     }
                     break;
 
