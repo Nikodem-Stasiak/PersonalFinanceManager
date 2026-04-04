@@ -43,19 +43,40 @@ public class Main {
             System.out.println("1. Dodaj transakcję");
             System.out.println("2. Pokaż historię i saldo");
             System.out.println("3. Zapisz i wyjdź");
-            System.out.print("Wybierz opcję: ");
 
-            int wybór = scanner.nextInt();
-            scanner.nextLine();
+            int wybor = 0;
+            while (true) {
+                try {
+                    System.out.print("Wybierz opcję: ");
+                    wybor = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Błąd podano nieznaną wartość:" + e.getMessage());
+                }
+            }
 
-            switch (wybór) {
+            switch (wybor) {
                 case 1:
                     boolean czyDodaćKolejną = true;
                     while (czyDodaćKolejną) {
                         System.out.println("=== DODAWANIE WPISU ===");
-                        System.out.print("Podaj kwotę: ");
-                        double kwota = scanner.nextDouble();
-                        scanner.nextLine();
+
+                        double kwota = 0;
+                        while (true) {
+                            try {
+                                System.out.print("Podaj kwotę: ");
+                                kwota = Double.parseDouble(scanner.nextLine());
+                                String wejscie = scanner.nextLine().replace(',', '.');
+                                if (kwota > 0) {
+                                    break;
+                                } else {
+                                    System.out.println("BŁĄD: Kwota musi być większa od zera!");
+                                }
+                                break;
+                            } catch (Exception e) {
+                                System.out.println("Błąd podano nieprawidłową wartość:" + e.getMessage());
+                            }
+                        }
 
                         System.out.print("Podaj kategorię: ");
                         String kategori = scanner.nextLine();
