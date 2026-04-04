@@ -79,8 +79,39 @@ public class Main {
                             }
                         }
 
-                        System.out.print("Podaj kategorię: ");
-                        String kategori = scanner.nextLine();
+                        String[] dostepneKategorie = {"Jedzenie", "Rozrywka", "Transport", "Rachunki", "Inne"};
+                        String kategoriaWybrana = "";
+                        int nr = 0;
+
+                        while (true) {
+                            System.out.println("--- WYBIERZ KATEGORIĘ ---");
+                            for (int i = 0; i < dostepneKategorie.length; i++) {
+                                System.out.println((i + 1) + "." + dostepneKategorie[i]);
+                            }
+
+                            try {
+                                System.out.print("Wybierz numer: ");
+                                nr = Integer.parseInt(scanner.nextLine());
+
+                                if (nr >= 1 && nr <= dostepneKategorie.length) {
+                                    break;
+                                } else {
+                                    System.out.println("BŁĄD: Wybierz poprawny numer z listy!");
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("BŁĄD: Musisz podać liczbę, a nie tekst!");
+                            }
+                        }
+
+                        if (nr == dostepneKategorie.length) {
+                            System.out.print("Podaj nazwę własnej kategorii: ");
+                            kategoriaWybrana = scanner.nextLine().trim();
+                            if (kategoriaWybrana.isEmpty()) {
+                                kategoriaWybrana = "Inne";
+                            }
+                        } else {
+                            kategoriaWybrana = dostepneKategorie[nr - 1];
+                        }
 
                         System.out.print("Podaj opis: ");
                         String opis = scanner.nextLine();
@@ -110,7 +141,7 @@ public class Main {
                             }
                         }
 
-                        historiaTransakcji.add(new Transaction(kwota, kategori, opis, data, czyToDochod));
+                        historiaTransakcji.add(new Transaction(kwota, kategoriaWybrana, opis, data, czyToDochod));
 
                         while (true) {
                             System.out.print("Czy dodać kolejną transakcję? (tak/nie): ");
